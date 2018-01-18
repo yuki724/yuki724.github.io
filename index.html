@@ -1,29 +1,222 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, user-scalable=yes">
-
-    <title>私の自己紹介</title>
-<style>
-    p{color:crimson;}
-</style>
+    <title>私の卒業制作</title>
 </head>
+
 <body>
-    <h1 style="color: blue;">好きな食べ物</h1>
-　<ul>
-　    <li>寿司</li>
-　    <li>ピザ</li>
-　    <li>ラーメン</li>
-　    <li>牛丼</li>
-　    <li>野菜</li>
-　    <li>焼肉</li>
-　</ul>
-　<h1 style="color: red;">趣味</h1>
-　<ol>
-　    <li>ゲーム</li>
-　    <li>音楽鑑賞</li>
-　    <li>カラオケ</li>
-　</ol>
+    <h1>日本を代表する喫茶店の全国展開</h1>
+    <p>日本で有名な喫茶店の全国展開の様子を都道府県別の店舗数をもとにグラフ化してみました。</p>
+    <h2>コメダ喫茶の店舗数</h2>
+    <p>2017年3月の現時点で全国に740店舗展開しています。
+ちなみに2016年3月～2017年3月までの1年間に70店舗ほど新規店舗がオープンしました。
+残念ながら、1店舗もない都道府県もありました。
+ グラフからわかる通り、コメダは愛知発祥の喫茶店ということもあり地元密着型の店舗であること分かります。
+  </p>
+    
+    <div id="drawChartRuby" style="width: 1200px; padding: 0; margin: 0; border: 0;"></div>
+    
+    <h2>スターバックスコーヒー</h2>
+    <div id="drawChartPHP" style="width: 1200px; padding: 0; margin: 0; border: 0;"></div>
+         
+  <h2>ドトール</h2>
+    <div id="drawChartPHP2" style="width: 1200px; padding: 0; margin: 0; border: 0;"></div>
+    
+    <script src="https://www.google.com/jsapi"></script>
+    <script>
+        // http://qiita.com/sadapon2008/items/deeb7cf017bcceecc9b5
+        // を引用し、修正を加えたもの
+        
+        // Load the Visualization API and the piechart package.
+        google.load('visualization', '1.0', {
+            'packages': ['geochart'],
+            'language': 'ja'
+        });
+
+        google.setOnLoadCallback(graphChart);
+
+        function graphChart() {
+            var data_ruby = google.visualization.arrayToDataTable(
+[
+['都道府県', '都道府県別の店舗数'],
+['北海道', 2],
+['青森', 0],
+['岩手', 1],
+['宮城', 4],
+['秋田', 0],
+['山形', 2],
+['福島', 4],
+['茨城', 12],
+['栃木', 9],
+['群馬', 7],
+['埼玉', 25],
+['千葉', 21],
+['東京', 45],
+['神奈川', 34],
+['新潟', 7],
+['富山', 6],
+['石川', 8],
+['福井', 6],
+['山梨', 4],
+['長野', 9],
+['岐阜', 32],
+['静岡', 28],
+['愛知', 245],
+['三重', 31],
+['滋賀', 16],
+['京都', 14],
+['大阪', 43],
+['兵庫', 25],
+['奈良', 12],
+['和歌山', 7],
+['鳥取', 3],
+['島根', 3],
+['岡山', 6],
+['広島', 9],
+['山口', 8],
+['徳島', 4],
+['香川', 3],
+['愛媛', 4],
+['高知', 2],
+['福岡', 22],
+['佐賀', 3],
+['長崎', 1],
+['熊本', 4],
+['大分', 3],
+['宮崎', 2],
+['鹿児島', 3],
+['沖縄', 0]
+]
+            );
+
+            var data_php = google.visualization.arrayToDataTable(
+[
+['都道府県', 'PHP求人情報数'],
+['北海道', 23],
+['青森', 3],
+['岩手', 2],
+['宮城', 8],
+['秋田', 2],
+['山形', 1],
+['福島', 4],
+['茨城', 10],
+['栃木', 9],
+['群馬', 14],
+['埼玉', 92],
+['千葉', 103],
+['東京', 1832],
+['神奈川', 205],
+['新潟', 2],
+['富山', 2],
+['石川', 8],
+['福井', 3],
+['山梨', 2],
+['長野', 5],
+['岐阜', 6],
+['静岡', 7],
+['愛知', 31],
+['三重', 4],
+['滋賀', 6],
+['京都', 41],
+['大阪', 222],
+['兵庫', 39],
+['奈良', 7],
+['和歌山', 6],
+['鳥取', 2],
+['島根', 9],
+['岡山', 4],
+['広島', 7],
+['山口', 5],
+['徳島', 2],
+['香川', 3],
+['愛媛', 2],
+['高知', 2],
+['福岡', 79],
+['佐賀', 2],
+['長崎', 3],
+['熊本', 6],
+['大分', 3],
+['宮崎', 4],
+['鹿児島', 2],
+['沖縄', 15]
+]
+            );
+            var data_php2 = google.visualization.arrayToDataTable(
+[
+['都道府県', 'PHP求人情報数'],
+['北海道', 23],
+['青森', 3],
+['岩手', 2],
+['宮城', 8],
+['秋田', 2],
+['山形', 1],
+['福島', 4],
+['茨城', 10],
+['栃木', 9],
+['群馬', 14],
+['埼玉', 92],
+['千葉', 103],
+['東京', 832],
+['神奈川', 205],
+['新潟', 2],
+['富山', 2],
+['石川', 8],
+['福井', 3],
+['山梨', 2],
+['長野', 5],
+['岐阜', 6],
+['静岡', 7],
+['愛知', 31],
+['三重', 4],
+['滋賀', 6],
+['京都', 41],
+['大阪', 222],
+['兵庫', 39],
+['奈良', 7],
+['和歌山', 6],
+['鳥取', 2],
+['島根', 9],
+['岡山', 4],
+['広島', 7],
+['山口', 5],
+['徳島', 2],
+['香川', 3],
+['愛媛', 2],
+['高知', 2],
+['福岡', 79],
+['佐賀', 2],
+['長崎', 3],
+['熊本', 6],
+['大分', 3],
+['宮崎', 4],
+['鹿児島', 2],
+['沖縄', 15]
+]
+            );
+            var option = {
+                region: 'JP',
+                resolution: 'provinces',
+                colorAxis: {
+                    colors: ['white', 'blue', '#00853f', 'black', 'yellow', '#e31b23']
+                },
+                backgroundColor: '#81d4fa',
+                datalessRegionColor: '#f8bbd0',
+                defaultColor: '#f5f5f5'
+            };
+
+            var graph_ruby = new google.visualization.GeoChart(document.getElementById('drawChartRuby'));
+            graph_ruby.draw(data_ruby, option);
+
+            var graph_php = new google.visualization.GeoChart(document.getElementById('drawChartPHP'));
+            graph_php.draw(data_php, option);
+            
+             var graph_php2 = new google.visualization.GeoChart(document.getElementById('drawChartPHP2'));
+            graph_php2.draw(data_php2, option);
+            
+        }
+    </script>
 </body>
+
 </html>
