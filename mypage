@@ -1,4 +1,4 @@
-<!doctype html>
+,<!doctype html>
 <html lang="ja">
 
 <head>
@@ -29,7 +29,7 @@
     <main>
         <div class="text-center py-5">
             <h2>リンク集</h2>
-            <a href="https://yuki724.github.io/graph/" class="btn btn-danger btn-lg">自己紹介ページ(新)</a>
+            <a href="https://yuki724.github.io/graph.html/" class="btn btn-danger btn-lg">自己紹介ページ(新)</a>
 
 
 
